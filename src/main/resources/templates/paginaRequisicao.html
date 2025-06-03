@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Controla Arduino</title>
+</head>
+<body>
+<h1>Controla Led</h1>
+<div id="imagemLed">
+
+</div>
+    <div id="controla-arduino">
+        <button onclick="mudarmodo(modoLigado)">Ligar</button>
+        <button onclick="mudarmodo(modoDesligado)">Desligar</button>
+    </div>
+
+<script>
+    function mudarmodo(modoLigado) {
+        document.getElementById("imagemLed").style.backgroundImage = "url('" + modoLigado
+    }
+    function mudarmodo(modoDesligado) {
+        document.getElementById("imagemLed").style.backgroundImage = "url('" + modoDesligado
+    }
+</script>
+</body>
+</html>

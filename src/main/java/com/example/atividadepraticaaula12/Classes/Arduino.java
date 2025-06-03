@@ -1,9 +1,6 @@
 package com.example.atividadepraticaaula12.Classes;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
@@ -15,9 +12,6 @@ public class Arduino {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected String codigo;
 
-    protected Date dataAlteracao;
-    protected Date dataTentativa;
-    protected boolean funcionou;
-    protected boolean estadoNaHora;
+    public boolean ligado;
 
 }
