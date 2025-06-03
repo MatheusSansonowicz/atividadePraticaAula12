@@ -32,15 +32,14 @@ public class ArduinoController {
     }
 
     @RequestMapping
-    public boolean ultimoEstadoArduino() {
+    public boolean estadoArduino() {
         if(arduinoRepositorio.findAll().isEmpty()) {
             return false;
         }
-        else if (arduinoRepositorio.findAll().getLast().isEstadoNaHora()== true) {
+        else if (arduinoRepositorio.findAll().getLast().isLigado()) {
             return true;
         }
         return false;
-
     }
 
 }
