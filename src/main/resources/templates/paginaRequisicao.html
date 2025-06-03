@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Controla Arduino</title>
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
 <h1>Controla Led</h1>
@@ -15,12 +16,26 @@
     </div>
 
 <script>
-    function mudarmodo(modoLigado) {
-        document.getElementById("imagemLed").style.backgroundImage = "url('" + modoLigado
+    const statusDiv = document.getElementById('status');
+    const ledStatus = document.getElementById('ledStatus');
+
+    // Função para atualizar o status do Arduino
+    async function atualizarStatus() {
+        try {
+            const response = await fetch('/');
+            const isLigado = await response.json();
+
+            ledStatus.className = isLigado ? 'led ligado' : 'led';
+            statusDiv.textContent = `Status: ${isLigado ? 'LIGADO' : 'DESLIGADO'}`;
+        } catch (error) {
+            console.error('Erro ao verificar status:', error);
+            statusDiv.textContent = 'Status: Erro de conexão';
+        }
     }
-    function mudarmodo(modoDesligado) {
-        document.getElementById("imagemLed").style.backgroundImage = "url('" + modoDesligado
-    }
+
+    // Atualizar status inicial e periodicamente
+    atualizarStatus();
+    setInterval(atualizarStatus, 5000); // Atualiza a cada 5 segundos
 </script>
 </body>
 </html>

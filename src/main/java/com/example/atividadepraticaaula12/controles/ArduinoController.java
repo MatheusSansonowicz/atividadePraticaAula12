@@ -21,25 +21,28 @@ public class ArduinoController {
     private ControlePorta controle = new ControlePorta("COM4", 9600);
 
     @GetMapping("/ligar")
-    public String ligarLed(){
+    public void ligarLed(){
+        String descricao = "ligado";
+        arduinoRepositorio.save(new Arduino(descricao));
         controle.enviaDados('1');
-        return "ok";
     }
     @GetMapping("/desligar")
-    public String desligarLed(){
+    public void desligarLed(){
+        String descricao = "desligado";
+        arduinoRepositorio.save(new Arduino(descricao));
         controle.enviaDados('2');
-        return "ok";
     }
 
-    @RequestMapping
+    /*@RequestMapping
     public boolean estadoArduino() {
         if(arduinoRepositorio.findAll().isEmpty()) {
+            Arduino a = new Arduino();
             return false;
         }
-        else if (arduinoRepositorio.findAll().getLast().isLigado()) {
+        else if (arduino) {
             return true;
         }
         return false;
-    }
+    }*/
 
 }
